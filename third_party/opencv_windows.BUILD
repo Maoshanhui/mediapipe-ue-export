@@ -1,0 +1,196 @@
+# Description:
+#   OpenCV libraries for video/image processing on Windows
+load("@mediapipe//mediapipe/unreal2:cc_static_library.bzl", "cc_static_library")
+licenses(["notice"])  # BSD license
+
+exports_files(["LICENSE"])
+
+#OPENCV_VERSION = "455"  # 4.5.5
+
+config_setting(
+    name = "opt_build",
+    values = {"compilation_mode": "opt"},
+)
+
+config_setting(
+    name = "dbg_build",
+    values = {"compilation_mode": "dbg"},
+)
+
+
+# cc_library(
+#     name = "opencv",
+#     srcs = select({
+#         ":opt_build": [
+#             "Source/ThirdParty/OpenCV/lib/Win64/opencv_world455.lib",
+#         ],
+#         ":dbg_build": [
+#             "Source/ThirdParty/OpenCV/lib/Win64/opencv_world455.lib",
+#         ],
+#     }),
+#     hdrs = glob(["Source/ThirdParty/OpenCV/include/opencv2/**/*.h*"]),
+#     includes = ["Source/ThirdParty/OpenCV/include/"],
+#     linkstatic = 1,
+#     visibility = ["//visibility:public"],
+# )
+
+
+cc_import(                             
+    name = "opencv_ade",
+    static_library = "x64/vc16/staticlib/ade.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_IlmImf",
+    static_library = "x64/vc16/staticlib/IlmImf.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_ippicvmt",
+    static_library = "x64/vc16/staticlib/ippicvmt.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_ippiw",
+    static_library = "x64/vc16/staticlib/ippiw.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_ittnotify",
+    static_library = "x64/vc16/staticlib/ittnotify.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_libjpeg-turbo",
+    static_library = "x64/vc16/staticlib/libjpeg-turbo.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_libopenjp2",
+    static_library = "x64/vc16/staticlib/libopenjp2.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_libpng",
+    static_library = "x64/vc16/staticlib/libpng.lib",
+	visibility = ["//visibility:public"]
+)
+
+cc_import(                             
+    name = "opencv_libprotobuf",
+    static_library = "x64/vc16/staticlib/libprotobuf.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_libtiff",
+    static_library = "x64/vc16/staticlib/libtiff.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_libwebp",
+    static_library = "x64/vc16/staticlib/libwebp.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_img_hash455",
+    static_library = "x64/vc16/staticlib/opencv_img_hash455.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_world455",
+    static_library = "x64/vc16/staticlib/opencv_world455.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_quirc",
+    static_library = "x64/vc16/staticlib/quirc.lib",
+	visibility = ["//visibility:public"]
+)
+cc_import(                             
+    name = "opencv_zlib",
+    static_library = "x64/vc16/staticlib/zlib.lib",
+	visibility = ["//visibility:public"]
+)
+
+
+
+
+
+
+
+
+# cc_library(
+#     name = "opencv",
+# 	hdrs = glob(["include/opencv2/**/*.h*"]),
+#     includes = ["include/"],
+#     linkstatic = 1,
+# 	implementation_deps=[  ":opencv_ade",
+# 			":opencv_IlmImf",
+# 			":opencv_ippicvmt",
+# 			":opencv_ippiw",
+# 			":opencv_ittnotify",
+# 			":opencv_libjpeg-turbo",
+# 			":opencv_libopenjp2",
+# 			":opencv_libpng",
+# 			":opencv_libprotobuf",
+# 			":opencv_libtiff",
+# 			":opencv_libwebp",
+# 			":opencv_img_hash455",
+# 			":opencv_world455",
+# 			":opencv_quirc",
+# 			":opencv_zlib"],
+#     visibility = ["//visibility:public"],
+# 	
+# )
+
+
+#cc_library(
+#    name = "opencv",
+#    srcs = select({
+#        ":opt_build": [
+#            "x64/vc16/staticlib/ade.lib",
+#			"x64/vc16/staticlib/IlmImf.lib",
+#			"x64/vc16/staticlib/ippicvmt.lib",
+#			"x64/vc16/staticlib/ippiw.lib",
+#			"x64/vc16/staticlib/ittnotify.lib",
+#			"x64/vc16/staticlib/libjpeg-turbo.lib",
+#			"x64/vc16/staticlib/libopenjp2.lib",
+#			"x64/vc16/staticlib/libpng.lib",
+#			"x64/vc16/staticlib/libprotobuf.lib",
+#			"x64/vc16/staticlib/libtiff.lib",
+#			"x64/vc16/staticlib/libwebp.lib",
+#			"x64/vc16/staticlib/opencv_img_hash455.lib",
+#			"x64/vc16/staticlib/opencv_world455.lib",
+#			"x64/vc16/staticlib/quirc.lib",
+#			"x64/vc16/staticlib/zlib.lib",
+#        ],
+#        ":dbg_build": [
+#            "Source/ThirdParty/OpenCV/lib/Win64/opencv_world455.lib",
+#        ],
+#    }),
+#    hdrs = glob(["include/opencv2/**/*.h*"]),
+#    includes = ["include/"],
+#    linkstatic = 1,
+#	alwayslink = True,
+#    visibility = ["//visibility:public"],
+#	
+#)
+
+cc_library(
+    name = "opencv",
+    srcs = select({
+        ":opt_build": [
+            "Source/ThirdParty/OpenCV/lib/Win64/opencv_world455.lib",
+			"Binaries/ThirdParty/Win64/opencv_world455.dll",
+        ],
+        ":dbg_build": [
+            "Source/ThirdParty/OpenCV/lib/Win64/opencv_world455d.lib",
+			"Binaries/ThirdParty/Win64/opencv_world455.dll",
+        ],
+    }),
+    hdrs = glob(["Source/ThirdParty/OpenCV/include/opencv2/**/*.h*"]),
+    includes = ["Source/ThirdParty/OpenCV/include/"],
+    linkstatic = 1,
+    visibility = ["//visibility:public"],
+	
+)
